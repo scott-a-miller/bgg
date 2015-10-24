@@ -1,4 +1,3 @@
-# bgg
 Board Game Geek Correlations
 ===
 
