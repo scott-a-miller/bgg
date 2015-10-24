@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="bgg">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="bgg.classpath">
+      <pathelement location="cls"/>
+      <fileset dir="jlib">
+        <include name="**/*.jar"/>
+      </fileset>
+    </path>
+    <target name="init">
+        <mkdir dir="cls"/>
+        <copy includeemptydirs="false" todir="cls">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="cls"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="init" name="build">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="cls" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="bgg.classpath"/>
+        </javac>
+    </target>
+	  <target depends="clean,build" name="jar">
+	  	<jar destfile="war/WEB-INF/lib/bgg.jar" basedir="cls" includes="**/**"/>
+	  </target>
+	  <target depends="jar" name="war">
+	  	<jar destfile="bgg.war" basedir="war" includes="**/**"/>
+    </target>
+	  <target depends="war" name="deploy">
+	  	<copy file="bgg.war" tofile="c:/dev/glassfish-3_0_1/glassfish/domains/domain1/autodeploy/bgg.war" overwrite="true"/>
+    </target>
+</project>

@@ -1,0 +1,63 @@
+<html>
+<title>About Correlations</title>
+<body>
+<p><a href='index.php'>Back to the list</a></p>
+<h3>About the Correlations</h3>
+<ul>
+<li>Reduced the list of games to those with 1000 or more
+ratings (need a lot of ratings to find enough overlap).</li>
+<li>This was just 590 games.</li>
+<li>Then I calculated the correlation between each of those games - the
+values go from -1 to +1.</li>
+</ul>
+
+<p>
+A high correlation isn't a recommendation per se; it just tells you
+that there is a strong linear relationship between the games. For
+example, if you like a game more than most other people then you will
+probably like a highly correlated game more than most other people.
+Note: if everyone believes that the correlated game sucks, you might agree,
+but you'll likely believe it's not quite as bad as everyone else
+says.
+</p>
+
+<p>
+What's cool about the stat is that it really pops out the related
+games. You'll see that the correlated games frequently have similar mechanics,
+theme, and/or weight.
+</p>
+
+<p>
+I just used the most basic correlation statistic (Pearson's
+product-moment coefficient): <a href="http://en.wikipedia.org/wiki/Correlation">Correlation on Wikipedia</a>
+</p>
+
+<p>
+If you take a look at the wikipedia site, the pictures show exactly
+what this is all about.
+</p>
+
+<h3>Implementation</h3>
+<p>
+The user names were scraped from the ratings pages of the top 100 games with Ruby (open-uri and
+basic regular expressions).
+</p>
+
+<p>
+The XML API client, and correlation calculations were written in Java (XPP and vanilla JDBC).
+</p>
+
+<p>
+bgg.brokenmodel.com is in plain ol' php 4.0.
+</p>
+
+<p>
+MySQL is used throughout.
+</p>
+
+<h3>Enjoy</h3>
+<p>Cheers - Scott</p>
+<p><a href="http://boardgamegeek.com/user/CitizenBob">Citizen Bob</a> on the geek</a></p>
+<p><a href="http://blog.brokenmodel.com">Software Blog</a></p>
+</body>
+</html>
